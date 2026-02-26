@@ -1,8 +1,8 @@
 package com.coluccifrancesco;
 
-public class Biblio {
+public class Library {
 	
-	private Biblio(){
+	private Library(){
 	}
 
 	/**
@@ -11,8 +11,8 @@ public class Biblio {
 	 * @author Francesco Colucci
 	 * @version 0.1
 	 */
-    public static void main(String[] args){
+    
+	public static void main(String[] args){
        
     }
-
 }
