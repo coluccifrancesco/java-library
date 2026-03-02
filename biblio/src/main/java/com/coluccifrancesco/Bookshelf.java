@@ -23,7 +23,7 @@ public class Bookshelf {
         return emptySlots;
     }
 
-    public void addBook(String title, String author, int pubYear){
+    public void addPhysicalBook(String title, String author, int pubYear){
 
         try {            
             
@@ -33,6 +33,28 @@ public class Bookshelf {
     
                     if (bookshelf[i] == null) {
                         bookshelf[i] = new Book(title, author, pubYear);
+                        System.out.println("Created " + bookshelf[i].getTitle() + "!");
+                        break;
+                    }
+                }
+            } 
+        
+        } catch (Exception e) {
+            System.out.println("Bookshelf is full! Can't add a book at the moment.");
+        }
+    }
+
+
+    public void addDigitalBook(String title, String author, int pubYear, int kbFileSize){
+
+        try {            
+            
+            if (emptySlots() > 0) {
+    
+                for(int i = 0; i < BOOKSHELF_LIMIT; i++){
+    
+                    if (bookshelf[i] == null) {
+                        bookshelf[i] = new DigitalBook(title, author, pubYear, kbFileSize);
                         System.out.println("Created " + bookshelf[i].getTitle() + "!");
                         break;
                     }
