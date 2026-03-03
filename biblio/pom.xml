@@ -64,7 +64,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>com.coluccifrancesco.Biblio</mainClass>
+                            <mainClass>com.coluccifrancesco.Library</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
