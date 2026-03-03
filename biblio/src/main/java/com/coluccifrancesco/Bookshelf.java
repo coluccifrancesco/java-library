@@ -45,7 +45,7 @@ public class Bookshelf {
     }
 
 
-    public void addDigitalBook(String title, String author, int pubYear, int kbFileSize){
+    public void addDigitalBook(String title, String author, int pubYear, double kbFileSize){
 
         try {            
             
@@ -72,7 +72,7 @@ public class Bookshelf {
             
             if (bookshelf[i] != null) {
                 
-                System.out.println(bookshelf[i].toString());
+                System.out.println(i + ". " + bookshelf[i].toString());
 
                 if (bookshelf[i].isClassic()) System.out.println(bookshelf[i].getTitle() + " is a classic.");
                 
@@ -96,6 +96,16 @@ public class Bookshelf {
         }
         
         return classics;
+    }
+
+    public int digitalsCounter(){
+        int digitals = 0;
+        
+        for(int i = 0; i < BOOKSHELF_LIMIT; i++){
+            if (bookshelf[i] != null && bookshelf[i] instanceof DigitalBook) digitals += 1;
+        }
+        
+        return digitals;
     }
 
     public void removeBookByTitle(String titleToRemove){

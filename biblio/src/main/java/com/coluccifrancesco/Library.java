@@ -24,7 +24,7 @@ public class Library {
 		String title = "";
 		String author = "";
 		int pubYear = 0;
-		int kbFileSize = 0;
+		double kbFileSize = 0;
 		
 		// Creating an istance of the bookshelf
 		Bookshelf bookshelf = new Bookshelf();
@@ -59,9 +59,7 @@ public class Library {
 					System.exit(-1);
 				}
 
-				scanner.nextLine();
-
-				if (userInput < 1 || userInput > 8) {
+				if (userInput < 1 || userInput > 6) {
 					System.out.println("Input not valid.");
 				}
 
@@ -90,15 +88,12 @@ public class Library {
 						} catch (InputMismatchException e) {
 					
 							System.out.println("You didn't insert an integer, try again.");
-							bookToAdd = 0;
 				
 						} catch (IllegalStateException | NoSuchElementException e) {
 				
 							System.out.println("There's been a problem, try again.");
 							System.exit(-1);
 						}
-
-						scanner.nextLine();
 
 						if (bookToAdd < 1 || bookToAdd > 3) {
 							System.out.println("Input not valid.");
@@ -141,6 +136,7 @@ public class Library {
 
 							try {
 								pubYear = scanner.nextInt();
+								scanner.nextLine();
 							
 							} catch (InputMismatchException e) {
 							
@@ -192,6 +188,7 @@ public class Library {
 
 							try {
 								pubYear = scanner.nextInt();
+								scanner.nextLine();
 							
 							} catch (InputMismatchException e) {
 							
@@ -206,11 +203,12 @@ public class Library {
 							System.out.print("File size in KB :> ");
 
 							try {
-								kbFileSize = scanner.nextInt();
+								kbFileSize = scanner.nextDouble();
+								scanner.nextLine();
 							
 							} catch (InputMismatchException e) {
 							
-								System.out.println("You didn't insert an integer");
+								System.out.println("You didn't insert a double");
 							} catch (IllegalStateException | NoSuchElementException e) {
 							
 								System.out.println("There's been a problem, try again.");
@@ -219,7 +217,7 @@ public class Library {
 
 							bookshelf.addDigitalBook(title, author, pubYear, kbFileSize);
 							
-							System.out.println("New physical book successfully created:");
+							System.out.println("New digital book successfully created:");
 							System.out.println(title);
 							System.out.println("Written by: " +  author);
 							System.out.println("Published in: " + pubYear);						
@@ -237,23 +235,110 @@ public class Library {
 				
 				// Remove a book
 				case 2:
+
+					int userChoice = 0;
+
+					do {
+						
+						System.out.println("Are you sure you want to delete a book?");
+						System.out.println("1. Yes");
+						System.out.println("2. No");
+
+						try {
+							userChoice = scanner.nextInt();
+							scanner.nextLine();
+
+						} catch (InputMismatchException e) {
 					
+							System.out.println("You didn't insert an integer, try again.");
+							userChoice = 0;
+				
+						} catch (IllegalStateException | NoSuchElementException e) {
+				
+							System.out.println("There's been a problem, try again.");
+							System.exit(-1);
+						}
+
+						if (userChoice < 1 || userChoice > 2) {
+							System.out.println("Input not valid.");
+						}
+						
+					} while (userChoice < 1 || userChoice > 2);
+				
+
+					switch (userChoice) {
+						
+						case 1:
+							String titleToRemove = "";
+
+							System.out.println("Books list: ");
+							bookshelf.showBookshelf();
+							
+							System.out.print("Insert TITLE of the book you want to remove :> ");
+									
+							try {
+								titleToRemove = scanner.nextLine();
+							} catch (IllegalStateException | NoSuchElementException e) {
+						
+								System.out.println("There's been a problem, try again.");
+								System.exit(-1);
+							}
+							
+							try {
+								bookshelf.removeBookByTitle(titleToRemove);
+							} catch (Exception e) {
+								System.out.println("There's been a problem, try again.");
+							}
+							
+							break;
 					
-					
+						case 2:
+							System.out.println("Back to the menu.");
+							break;
+					}
+
 					break;
 				
 				// View the full library
 				case 3:
+
+					System.out.println("Full library: ");
+
+					try {
+						bookshelf.showBookshelf();
+					} catch (Exception e) {
+						System.out.println("There's been a problem, try again.");
+					}
 					
 					break;
 				
-				// Classics conter
+				// Classics counter
 				case 4:
+				
+					int classics = bookshelf.classicsCounter();
+
+					if (classics == 0) {
+						System.out.println("There are no classic books in the bookshelf.");
+					} else if (classics == 1){
+						System.out.println("There's " + classics + " classic in the bookshelf.");
+					} else if (classics > 1) {
+						System.out.println("There are " + classics + " classics in the bookshelf.");
+					}
 					
 					break;
 					
-				// Digital-books counter
+				// Digital books counter
 				case 5:
+
+					int digitals = bookshelf.digitalsCounter();
+
+					if (digitals == 0) {
+						System.out.println("There are no digital books in the bookshelf.");
+					} else if (digitals == 1){
+						System.out.println("There's " + digitals + " digital book in the bookshelf.");
+					} else if (digitals > 1) {
+						System.out.println("There are " + digitals + " digital books in the bookshelf.");
+					}
 					
 					break;
 				
