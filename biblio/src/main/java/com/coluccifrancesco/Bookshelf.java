@@ -33,15 +33,19 @@ public class Bookshelf {
     
                     if (bookshelf[i] == null) {
                         bookshelf[i] = new Book(title, author, pubYear);
+                        System.out.println(" ");
                         System.out.println("Created " + bookshelf[i].getTitle() + "!");
+                        System.out.println(" ");
                         break;
                     }
                 }
             } 
         
         } catch (Exception e) {
+            System.out.println(" ");
             System.out.println("Bookshelf is full! Can't add a book at the moment.");
         }
+
     }
 
 
@@ -55,6 +59,7 @@ public class Bookshelf {
     
                     if (bookshelf[i] == null) {
                         bookshelf[i] = new DigitalBook(title, author, pubYear, kbFileSize);
+                        System.out.println(" ");
                         System.out.println("Created " + bookshelf[i].getTitle() + "!");
                         break;
                     }
@@ -64,9 +69,13 @@ public class Bookshelf {
         } catch (Exception e) {
             System.out.println("Bookshelf is full! Can't add a book at the moment.");
         }
+
+        System.out.println(" ");
     }
 
     public void showBookshelf(){
+
+        System.out.println(" ");
 
         for(int i = 0; i < BOOKSHELF_LIMIT; i++){
             
@@ -86,6 +95,22 @@ public class Bookshelf {
                 System.out.println(" ");
             }
         }
+
+        System.out.println(" ");
+    }
+
+    public void booksList(){
+
+        System.out.println(" ");
+
+        for(int i = 0; i < BOOKSHELF_LIMIT; i++){
+            
+            if (bookshelf[i] != null) {
+                System.out.println(i + ". " + bookshelf[i].getTitle());
+            }
+        }    
+        
+        System.out.println(" ");
     }
 
     public int classicsCounter(){
@@ -110,11 +135,14 @@ public class Bookshelf {
 
     public void removeBookByTitle(String titleToRemove){
 
+        System.out.println(" ");
+
+        String trimmedTitle = titleToRemove.trim();
         boolean bookFound = false;
 
         for(int i = 0; i < BOOKSHELF_LIMIT; i++){
             
-            if (bookshelf[i] != null && bookshelf[i].getTitle().equals(titleToRemove)) {
+            if (bookshelf[i] != null && bookshelf[i].getTitle().replace(" ", "").trim().equalsIgnoreCase(trimmedTitle.replace(" ", ""))) {
                 bookFound = true;
                 bookshelf[i] = null;
                 System.out.println(titleToRemove + " has been thrown away.");
@@ -122,6 +150,8 @@ public class Bookshelf {
             }
         }
 
-        if (!bookFound) System.out.println("No " + titleToRemove + " on the bookshelf.");
+        if (!bookFound) System.out.println(titleToRemove + " isn't on the bookshelf.");
+
+        System.out.println(" ");
     }
 }

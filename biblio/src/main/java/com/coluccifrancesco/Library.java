@@ -36,6 +36,7 @@ public class Library {
 			// The menu is shown until user inserts a valid input
 			do {
 		
+				System.out.println(" ");
 				System.out.println("Welcome to our library! Choose what to do:");
 				System.out.println("1. Add a book");
 				System.out.println("2. Remove a book");
@@ -43,6 +44,7 @@ public class Library {
 				System.out.println("4. Classics conter");
 				System.out.println("5. Digital-books counter");
 				System.out.println("6. Quit");
+				System.out.println(" ");
 				
 				try {
 					userInput = scanner.nextInt();
@@ -76,6 +78,7 @@ public class Library {
 					// Choose to add a digital book or not
 					do {
 						
+						System.out.println(" ");
 						System.out.println("Do you want to add a physical book or a digital one?");
 						System.out.println("1. Physical");
 						System.out.println("2. Digital");
@@ -107,7 +110,9 @@ public class Library {
 						
 						// Add a physical book
 						case 1:
+							System.out.println(" ");
 							System.out.print("Add a physical book.");
+							System.out.println(" ");
 							
 							// Insert title
 							System.out.print("Title :> ");
@@ -149,17 +154,21 @@ public class Library {
 
 							bookshelf.addPhysicalBook(title, author, pubYear);
 							
+							System.out.println(" ");
 							System.out.println("New physical book successfully created:");
 							System.out.println(title);
 							System.out.println("Written by: " +  author);
 							System.out.println("Published in: " + pubYear);
+							System.out.println(" ");
 
 							break;
 					
 						// Add a digital book
 						case 2:
 
+							System.out.println(" ");
 							System.out.print("Add a digital book.");
+							System.out.println(" ");
 							
 							// Insert title
 							System.out.print("Title :> ");
@@ -217,16 +226,19 @@ public class Library {
 
 							bookshelf.addDigitalBook(title, author, pubYear, kbFileSize);
 							
+							System.out.println(" ");
 							System.out.println("New digital book successfully created:");
 							System.out.println(title);
 							System.out.println("Written by: " +  author);
 							System.out.println("Published in: " + pubYear);						
-							System.out.println("File occupies: " + kbFileSize + " KB's");						
+							System.out.println("File occupies: " + kbFileSize + " KB's");
+							System.out.println(" ");						
 
 							break;
 
 						// Exit
 						case 3:
+							System.out.println(" ");
 							System.out.println("Book creation menu exited.");
 							break;
 					}
@@ -240,9 +252,11 @@ public class Library {
 
 					do {
 						
+						System.out.println(" ");
 						System.out.println("Are you sure you want to delete a book?");
 						System.out.println("1. Yes");
 						System.out.println("2. No");
+						System.out.println(" ");
 
 						try {
 							userChoice = scanner.nextInt();
@@ -269,10 +283,12 @@ public class Library {
 					switch (userChoice) {
 						
 						case 1:
+
 							String titleToRemove = "";
 
+							System.out.println(" ");
 							System.out.println("Books list: ");
-							bookshelf.showBookshelf();
+							bookshelf.booksList();
 							
 							System.out.print("Insert TITLE of the book you want to remove :> ");
 									
@@ -290,9 +306,12 @@ public class Library {
 								System.out.println("There's been a problem, try again.");
 							}
 							
+							System.out.println(" ");
+
 							break;
 					
 						case 2:
+							System.out.println(" ");
 							System.out.println("Back to the menu.");
 							break;
 					}
@@ -302,6 +321,7 @@ public class Library {
 				// View the full library
 				case 3:
 
+					System.out.println(" ");
 					System.out.println("Full library: ");
 
 					try {
@@ -309,11 +329,15 @@ public class Library {
 					} catch (Exception e) {
 						System.out.println("There's been a problem, try again.");
 					}
+
+					System.out.println(" ");
 					
 					break;
 				
 				// Classics counter
 				case 4:
+
+					System.out.println(" ");
 				
 					int classics = bookshelf.classicsCounter();
 
@@ -324,11 +348,15 @@ public class Library {
 					} else if (classics > 1) {
 						System.out.println("There are " + classics + " classics in the bookshelf.");
 					}
+
+					System.out.println(" ");
 					
 					break;
 					
 				// Digital books counter
 				case 5:
+
+					System.out.println(" ");
 
 					int digitals = bookshelf.digitalsCounter();
 
@@ -340,11 +368,14 @@ public class Library {
 						System.out.println("There are " + digitals + " digital books in the bookshelf.");
 					}
 					
+					System.out.println(" ");
+
 					break;
 				
 				//Quit
 				case 6:
 
+					System.out.println(" "); 
 					System.out.println("Bye!");
 					break;
 			}

@@ -12,7 +12,7 @@ public class Book {
     public Book(String title, String author, int pubYear){
         
         // invalid input handling
-        if (title.equals("") || author.equals("") || pubYear > LocalDate.now().getYear() && pubYear < (-1000)){
+        if (title.equals("") || author.equals("") || pubYear > LocalDate.now().getYear() || pubYear < (-1000)){
             throw new IllegalArgumentException("Cannot create character");
         } else {
 
